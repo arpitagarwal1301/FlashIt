@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#A9A9A9"
+    android:background="#3D2B56"
     tools:context="com.example.saturn.flashit.MainActivity">
 
     <LinearLayout
@@ -18,14 +18,14 @@
         android:layout_gravity="center"
         android:id="@+id/linearLayout">
 
-        <ImageButton
-            android:src="@drawable/custom_button"
+        <ToggleButton
+            android:button="@drawable/custom_toggle"
             android:layout_gravity="center|center_horizontal|center_vertical"
-            android:layout_marginLeft="60dp"
-            android:layout_width="240dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="320dp"
             android:layout_height="240dp"
             android:id="@+id/imageButton"
-            android:background="#A9A9A9"
+            android:background="#3D2B56"
             android:foregroundGravity="center"
             android:padding="5dp" />
     </LinearLayout>
@@ -43,8 +43,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/seekBar"
             android:layout_gravity="center"
-            android:padding="10dp"
-            android:layout_weight="1" />
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:indeterminate="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -54,10 +57,10 @@
             android:id="@+id/textView_progress"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:textColor="#ffffff"
+            android:textColor="#E4FDE1"
             android:textStyle="normal"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:textSize="50dp" />
     </LinearLayout>
 
 

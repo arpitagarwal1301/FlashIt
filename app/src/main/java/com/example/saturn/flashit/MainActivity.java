@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
@@ -23,13 +22,15 @@ import butterknife.ButterKnife;
 public class MainActivity extends Activity {
 
     //private ImageButton button;
-    @BindView(R.id.textView_progress)  TextView textView;
-    @BindView(R.id.imageToggleButton)  ToggleButton button;
-    @BindView(R.id.seekBar)  SeekBar seekBar;
+    @BindView(R.id.textView_progress)
+    TextView textView;
+    @BindView(R.id.imageToggleButton)
+    ToggleButton button;
+    @BindView(R.id.seekBar)
+    SeekBar seekBar;
 
     private static final String Value_ZERO = "0";
     private boolean isFlashOn = false;
-    private Camera camera;
     private int freq;
     private Thread t;
     private StroboRunner stroboRunner;
@@ -59,7 +60,7 @@ public class MainActivity extends Activity {
                     getString(R.string.NO_CAMERA_ERROR),
                     Toast.LENGTH_SHORT).show();
             return;
-        }else {
+        } else {
 //            initialiseResources();
             initialiseResourcesCamera2();
             setToggleButtonBehaviour();
@@ -70,14 +71,18 @@ public class MainActivity extends Activity {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void initialiseResourcesCamera2() {
-        mCameraManager =(CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        mCameraManager.registerTorchCallback(torchCallback, null);// (callback, handler)
+
+        mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+//        mCameraManager.registerTorchCallback(torchCallback, null);// (callback, handler)
         try {
             cameraId =  mCameraManager.getCameraIdList()[0];
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+
+//        checkForCameraPermission();
     }
+
 
     private void setFlashOn(Boolean enable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -89,7 +94,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    CameraManager.TorchCallback torchCallback = new CameraManager.TorchCallback() {
+    /*CameraManager.TorchCallback torchCallback = new CameraManager.TorchCallback() {
         @Override
         public void onTorchModeUnavailable(String cameraId) {
             super.onTorchModeUnavailable(cameraId);
@@ -98,10 +103,10 @@ public class MainActivity extends Activity {
         @Override
         public void onTorchModeChanged(String cameraId, boolean enabled) {
             super.onTorchModeChanged(cameraId, enabled);
-            isFlashOn = enabled;
-            button.setChecked(enabled);
+            *//*isFlashOn = enabled;
+            button.setChecked(enabled);*//*
         }
-    };
+    };*/
 
     private void setToggleButtonBehaviour() {
 
@@ -203,20 +208,18 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-       releaseCamera();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        releaseCamera();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         releaseCamera();
-        mCameraManager.unregisterTorchCallback(torchCallback);
+//        mCameraManager.unregisterTorchCallback(torchCallback);
 
     }
 

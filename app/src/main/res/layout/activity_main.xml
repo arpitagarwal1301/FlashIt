@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#3D2B56"
+    android:background="?attr/colorBackgroundMain"
     tools:context="com.example.saturn.flashit.MainActivity">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:weightSum="1"
         android:layout_gravity="center"
-        android:id="@+id/linearLayout">
+        android:id="@+id/toggleImageLayout">
 
         <ToggleButton
             android:button="@drawable/custom_toggle"
@@ -24,8 +24,8 @@
             android:layout_marginLeft="20dp"
             android:layout_width="320dp"
             android:layout_height="240dp"
-            android:id="@+id/imageButton"
-            android:background="#3D2B56"
+            android:id="@+id/imageToggleButton"
+            android:background="?attr/colorBackgroundMain"
             android:foregroundGravity="center"
             android:padding="5dp" />
     </LinearLayout>
@@ -36,7 +36,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout">
+        android:layout_below="@+id/toggleImageLayout">
 
         <SeekBar
             android:layout_width="fill_parent"
@@ -52,14 +52,11 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0"
             android:id="@+id/textView_progress"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#E4FDE1"
-            android:textStyle="normal"
-            android:visibility="visible"
+            android:textColor="?attr/colorText"
             android:textSize="50dp" />
     </LinearLayout>
 

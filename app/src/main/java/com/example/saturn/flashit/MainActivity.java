@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
 
     private CameraManager mCameraManager;
     private String cameraId;
+    private Time timeVar=new Time();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,6 +165,7 @@ public class MainActivity extends Activity {
     private void flashFlicker() {
         if (isFlashOn) {
             freq = seekBar.getProgress();
+            timeVar.setSleepTime(freq);
             stroboRunner = new StroboRunner();
             t = new Thread(stroboRunner);
             t.start();
@@ -182,9 +184,9 @@ public class MainActivity extends Activity {
                 while (!stopFlicker) {
                     if (freq != 0) {
                         setFlashOn(true);
-                        Thread.sleep((long) Math.floor(freq * 100));
+                        Thread.sleep(timeVar.getSleepTime());
                         setFlashOn(false);
-                        Thread.sleep((long) Math.floor(freq * 100));
+                        Thread.sleep(timeVar.getSleepTime());
                     } else {
                         setFlashOn(true);
                     }

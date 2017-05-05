@@ -182,6 +182,7 @@ public class MainActivity extends Activity {
         public void run() {
             try {
                 while (!stopFlicker) {
+
                     if (freq != 0) {
                         setFlashOn(true);
                         Thread.sleep(timeVar.getSleepTime());
